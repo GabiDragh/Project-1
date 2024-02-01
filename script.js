@@ -1,4 +1,4 @@
-const apiUrl = "https://restcountries.com/v3.1/name/china?fullText=true";
+const apiUrl = "https://restcountries.com/v3.1/name/argentina?fullText=true";
 
 fetch(apiUrl)
   .then((response) => response.json())
@@ -28,4 +28,26 @@ fetch(apiUrl)
     console.log(officialName);
     var mapsLink = data[0].maps.googleMaps;
     console.log(mapsLink);
+    var newsCountry = data[0].cca2;
+    console.log(newsCountry);
+
+    var APIkey = "3e63b2e1d60e44d09750ac4308a89e23";
+
+    var getNewsURL =
+      "https://newsapi.org/v2/top-headlines?country=" +
+      newsCountry +
+      "&apiKey=" +
+      APIkey;
+    var corsURL =
+      "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + getNewsURL;
+    console.log(getNewsURL);
+    console.log(corsURL);
+    fetch(corsURL)
+      .then(function (response) {
+        console.log(JSON.stringify(response.json));
+        return response.json();
+      })
+      .then(function (newsData) {
+        console.log(newsData);
+      });
   });
