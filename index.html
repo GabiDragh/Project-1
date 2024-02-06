@@ -53,7 +53,7 @@
 <!--Form Bootstrap-->
 
 <div class="container-fluid">
-    <div class="row column-gap-4 justify-content-center">
+    <div class="row column-gap-4 justify-content-center mt-5">
         <aside class="card col-lg-5 mt-1 mb-2 pb-3">
          <div class="card-body">
           <h2 id="countriesFormHeader">Search for a country</h2>
@@ -62,7 +62,7 @@
              <div class="form-group row mt-1">
               <label for="search-input" class="col-sm-3 col-form-label">Country</label>
               <div class="col-sm-9">
-                 <input type="text" class="form-control" id="search-input searchCountry" placeholder="Enter country"/>
+                 <input type="text" class="form-control" id="search-input" placeholder="Enter country"/>
               </div>
               </div>
 
@@ -120,6 +120,8 @@
         <div class="card col-lg-2 mt-1 mb-2 g-2 pb-3">
             <div class="card-body">
                 <h2 id="searchHistory">Search history</h2> <!--Header-->
+                <hr class="hr prevSearches-hr" /> <!--Horizontal rule to separate buttons from search list-->
+                <div class="list-group" id="history"></div> <!--Countries history list-->
                 <br></br> 
                 <div class="form-group row mt-1"> 
                      <button type="submit" class="btn btn-warning col-sm-5 pd-2 mb-1" id="clearSearchButton">Clear</button>
@@ -194,14 +196,14 @@
   </div>
 
 <!--Footer Bootstrap card-->
-<div class="card text-center">
+<div class="card text-center mt-5">
   <div class="card-footer text-body-secondary">
-    2 days ago
+    News by country
   </div>
 </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
