@@ -1,83 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Bootstrap link-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
     <!--CSS file link-->
-    <link rel="stylesheet" href="./assets/style.css" >
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Countries info</title>
-  </head>
-  <body>
+</head>
+<body>
     <!--Bootstrap Navbar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <!--Form Bootstrap-->
+<!--Form Bootstrap-->
 
 <div class="container-fluid">
     <div class="row column-gap-4 justify-content-center mt-5">
@@ -93,43 +67,7 @@
               </div>
               </div>
 
-             <div class="form-group row mt-1">
-                <label for="search-input" class="col-sm-3 col-form-label">Capital</label>
-                <div class="col-sm-9">
-                   <input type="text" class="form-control" id="search-input searchCapital" placeholder="Enter capital"/>
-                </div>
-             </div>
 
-             <div class="form-group row mt-1">
-                <label for="search-input" class="col-sm-3 col-form-label">Region</label>
-                <div class="col-sm-9">
-                   <input type="text" class="form-control" id="search-input searchRegion" placeholder="Enter region"/>
-                </div>
-             </div>
-
-             <div class="form-group row mt-1">
-                <label for="search-input" class="col-sm-3 col-form-label">Languages</label>
-                <div class="col-sm-9">
-                   <input type="text" class="form-control" id="search-input searchLanguages" placeholder="Enter language"/>
-                </div>
-             </div>
-
-             <div class="form-group row mt-1">
-                <label for="search-input" class="col-sm-3 col-form-label">Population</label>
-                <div class="col-sm-9"> <!--Drop down with population ranges >100.000, >1.000.000?-->
-                   <input type="text" class="form-control" id="search-input searchPopulation" placeholder="Enter Population"/>
-                </div>
-             </div>
-
-             <div class="form-group row mt-1">
-                <label for="search-input" class="col-sm-3 col-form-label">Currency</label>
-                <div class="col-sm-9">
-                    <select class="form-select" id="inputGroupSelect01 searchCurrency" placeholder="Select Currency">
-                        <option selected>Choose...</option>
-                        <option value="1"><!--Js function to populate select button with all possible currencies?--></option>
-                      </select>
-                </div>
-             </div>
 
                 <div class="form-group row mt-1">
                    <div class="col-sm-3">
@@ -141,70 +79,52 @@
              </form>
          </div>
         </aside>
-      </div>
-    </div>
 
-    <!--Carousel Bootstrap-needs centering-->
+<!--Search history section card-->
 
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
+        <div class="card col-lg-2 mt-1 mb-2 g-2 pb-3">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+                <h2 id="searchHistory">Search history</h2> <!--Header-->
+                <hr class="hr prevSearches-hr" /> <!--Horizontal rule to separate buttons from search list-->
+                <div class="list-group" id="history"></div> <!--Countries history list-->
+                <br></br> 
+                <div class="form-group row mt-1"> 
+                     <button type="submit" class="btn btn-warning col-sm-5 pd-2 mb-1" id="clearSearchButton">Clear</button>
+                     <hr class="hr prevSearches-hr" /> <!--Horizontal rule to separate buttons from search list-->
+                     <div class="list-group" id="history"></div> <!--Countries history list-->
+                 </div>
+            </div> 
         </div>
-        <div class="carousel-item">
-          <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
 
-    <!--Footer Bootstrap card-->
-    <div class="card text-center">
-      <div class="card-footer text-body-secondary">2 days ago</div>
+<!--Local news section card-->
+
+        <div class="card col-lg-4 mt-1 mb-2 g-2 pb-3">
+            <div class="card-body">
+                <section id="localNews">
+                   <h2 id="newsHeader">Local news</h2>
+                   <div class="card">
+                       <div class="card-body">
+                          <h3 class="card-title"><!--Js for title--></h3>
+                          <p class="card-text"><!--Js for article text--></p>
+                        </div>
+                    </div>
+                </section>
+           </div>
+        </div>
     </div>
+</div>
+
+      
+
+<!--Footer Bootstrap card-->
+<div class="card text-center mt-5">
+  <div class="card-footer text-body-secondary">
+    News by country
+  </div>
+</div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>
-  </body>
+</body>
 </html>
