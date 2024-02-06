@@ -1,3 +1,48 @@
+/* ------- Create buttons if countries already stored in local storage ------ */
+var countryArray = [];
+var countryArrayStored = localStorage.getItem("Countries");
+if (countryArrayStored !== null) {
+    countryArray = JSON.parse(countryArrayStored);
+    for (var i = 0; i < countryArray.length; i++) {
+        createCountryButton(countryArray[i], 0);
+    }
+}
+
+/* -------------------- Function to create country button ------------------- */
+function createCountryButton(country, updateLS) {
+
+  // Step 0: Get the appropriate element from the HTML to insert the buttons in
+  var targetSection = document.getElementById("history");
+
+  // Step 1: Create the button element
+  var button = document.createElement("button");
+
+  // Step 2: Set button attributes
+  button.setAttribute("data-country", country);
+  button.setAttribute("class", "btn btn-secondary mb-1");
+  button.setAttribute("type", "button");
+
+  // Step 3: Add text to the button
+  button.textContent = country;
+
+  // Step 4: Append the button to the HTML document
+  targetSection.appendChild(button);
+
+  // Update array of countries and save to local storage
+  if (updateLS) {
+      console.log(`Info: ${country} was added to local storage`);
+      countryArray.push(country);
+      var countryArrayString = JSON.stringify(countryArray);
+      localStorage.setItem("Countries", countryArrayString);
+  }
+}
+
+/* ---- Function to clear local storage when the reset button is pressed ---- */
+function resetApp() {
+  localStorage.removeItem("Countries");
+}
+
+/* ------------------- Fetch country and news information ------------------- */
 $(document).ready(function () {
   $("button").on("click", function (e) {
     e.preventDefault();
