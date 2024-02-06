@@ -1,3 +1,6 @@
+/* ----------------- Create a listener for the Clear button ----------------- */
+document.getElementById("clearSearchButton").addEventListener("click", resetApp);
+
 /* ------- Create buttons if countries already stored in local storage ------ */
 var countryArray = [];
 var countryArrayStored = localStorage.getItem("Countries");
@@ -25,7 +28,7 @@ function createCountryButton(country, updateLS) {
   button.textContent = country;
 
   // Step 4: Append the button to the HTML document
-  targetSection.appendChild(button);
+  targetSection.prepend(button);
 
   // Update array of countries and save to local storage
   if (updateLS) {
@@ -38,12 +41,16 @@ function createCountryButton(country, updateLS) {
 
 /* ---- Function to clear local storage when the reset button is pressed ---- */
 function resetApp() {
+  console.log("Clear button pressed");
   localStorage.removeItem("Countries");
+  var targetSection = document.getElementById("history");
+  targetSection.innerHTML = "";
+  countryArray = [];
 }
 
 /* ------------------- Fetch country and news information ------------------- */
 $(document).ready(function () {
-  $("button").on("click", function (e) {
+  $("#countrySearch").on("click", function (e) {
     e.preventDefault();
     var countryName = $("#search-input").val();
 
