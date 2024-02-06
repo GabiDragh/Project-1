@@ -2,15 +2,14 @@
 var countryArray = [];
 var countryArrayStored = localStorage.getItem("Countries");
 if (countryArrayStored !== null) {
-    countryArray = JSON.parse(countryArrayStored);
-    for (var i = 0; i < countryArray.length; i++) {
-        createCountryButton(countryArray[i], 0);
-    }
+  countryArray = JSON.parse(countryArrayStored);
+  for (var i = 0; i < countryArray.length; i++) {
+    createCountryButton(countryArray[i], 0);
+  }
 }
 
 /* -------------------- Function to create country button ------------------- */
 function createCountryButton(country, updateLS) {
-
   // Step 0: Get the appropriate element from the HTML to insert the buttons in
   var targetSection = document.getElementById("history");
 
@@ -30,10 +29,10 @@ function createCountryButton(country, updateLS) {
 
   // Update array of countries and save to local storage
   if (updateLS) {
-      console.log(`Info: ${country} was added to local storage`);
-      countryArray.push(country);
-      var countryArrayString = JSON.stringify(countryArray);
-      localStorage.setItem("Countries", countryArrayString);
+    console.log(`Info: ${country} was added to local storage`);
+    countryArray.push(country);
+    var countryArrayString = JSON.stringify(countryArray);
+    localStorage.setItem("Countries", countryArrayString);
   }
 }
 
@@ -100,6 +99,7 @@ $(document).ready(function () {
           })
           .then(function (newsData) {
             console.log(newsData);
+            createCountryButton(countryName, true);
           });
       });
   });
