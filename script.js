@@ -106,7 +106,7 @@ $(document).ready(function () {
           })
           .then(function (newsData) {
             console.log(newsData);
-            createCountryButton(countryName, true);
+            if (!(countryArray.includes(countryName))) createCountryButton(countryName, true);
           });
       });
   });
