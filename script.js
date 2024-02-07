@@ -125,6 +125,8 @@ function fetchCountryInfo(e) {
       console.log(newsCountry);
       $('#newsCountry').html("Country Initial: " + newsCountry);
 
+      $('.country_info').show();
+
       var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
 
       var getNewsURL =
@@ -183,11 +185,13 @@ function fetchCountryInfo(e) {
 
           var articleTextThree = randomArticleThree.description;
           $(".card-text-three").append(articleTextThree);
+          $('.news_section').show();
         });
     })
     .catch(error => {
       console.log(error);
-      $('#capital').html("Not found");
+      $('.country_info, .news_section').hide();
+      $('.country_not_found').show();
   });
 };
 
