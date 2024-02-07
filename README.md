@@ -1,16 +1,19 @@
-# Project-1
+# Summary
 
-A README file typically serves as a concise guide for users and developers to understand the purpose, installation process, and usage of a software project or application. Below is a template for a README file tailored to your website:
+A system that retrieves information about a country from the REST Countries API and then uses that information to fetch relevant news articles using the news API. Here's a basic outline of how you might do this:
+Fetch Country Information: Use the REST Countries API to retrieve information about a specific country. This information might include the country's name, capital, population, region, etc.
+Extract Relevant Data: Extract the relevant data from the response obtained from the REST Countries API, such as the country's name, capital, or region.
+Query News API: Use the extracted data, such as the country name or capital, to construct a search query for the news API.
+Retrieve News Articles: Query the news API with the constructed search query to retrieve relevant news articles about the country.
+Display or Process News Articles: Once you have retrieved the news articles, you can display them to the user, process them further, or perform any other desired actions.
 
----
+# Headline
 
-# Country Explorer
-
-Welcome to Country Explorer, a website that allows users to search for countries and view detailed information about them along with the latest news headlines.
+A website that allows users to search for countries and view detailed information about them along with the latest news headlines.
 
 ## Overview
 
-Country Explorer is a simple web application built to provide users with information about countries worldwide. Users can search for a specific country and get details such as its capital, population, region, and currency. Additionally, the website displays the latest news headlines related to the searched country.
+This is a simple web application built to provide users with information about countries worldwide. Users can search for a specific country and get details such as its capital, population, region, and currency. Additionally, the website displays the latest news headlines related to the searched country.
 
 ## Features
 
@@ -51,12 +54,6 @@ To run Country Explorer locally, follow these steps:
 ## Credits
 
 - Country information retrieved from the REST Countries API.
-- News headlines fetched from the News API.
-
-## License
-
-This project is licensed under the 
+- News headlines fetched from the News API (newsdata.io)
 
 ---
-
-Feel free to customize the content of the README file to better suit your website and project requirements. Additionally, include any additional sections or information that may be relevant to your users and contributors.
