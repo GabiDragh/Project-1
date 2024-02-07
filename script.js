@@ -89,7 +89,7 @@ function fetchCountryInfo(e) {
 
       var sideOfRoad = data[0].car.side;
       console.log("side of road", sideOfRoad);
-      $('#sideOfRoad').html("Capital: " + sideOfRoad);
+      $('#sideOfRoad').html("Side of road: " + sideOfRoad);
 
       var continent = data[0].continents[0];
       console.log(continent);
@@ -105,9 +105,13 @@ function fetchCountryInfo(e) {
 
       var languages = data[0].languages;
       console.log(languages);
-      $('#languages').html(JSON.stringify(languages));
-      
+      var languages_array = [];
 
+      for(var i in languages)
+        languages_array.push(languages[i]);
+          
+      $('#languages').html(languages_array.toString());
+      
       var timezone = data[0].timezones[0];
       console.log(timezone);
       $('#timezone').html("Timezone: " + timezone);
