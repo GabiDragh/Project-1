@@ -89,7 +89,7 @@ function fetchCountryInfo(e) {
 
       var sideOfRoad = data[0].car.side;
       console.log("side of road", sideOfRoad);
-      $('#sideOfRoad').html("Capital: " + sideOfRoad);
+      $('#sideOfRoad').html("Side of road: " + sideOfRoad);
 
       var continent = data[0].continents[0];
       console.log(continent);
