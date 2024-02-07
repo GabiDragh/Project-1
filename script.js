@@ -128,7 +128,8 @@ function fetchCountryInfo(e) {
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
       $('#newsCountry').html("Country Initial: " + newsCountry);
-
+      
+      $('.country_not_found').hide();
       $('.country_info').show();
 
       var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
