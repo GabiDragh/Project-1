@@ -173,10 +173,10 @@ function fetchCountryInfo(e) {
               var randomArticleThree = newsArray[2];
               console.log(randomArticleThree);
 
-              var articleTitle = randomArticle.title;
+              var articleTitle = randomArticleThree.title;
               $(".card-title-three").append(articleTitle);
 
-              var articleText = randomArticle.description;
+              var articleText = randomArticleThree.description;
               $(".card-text-three").append(articleText);
             });
         });
