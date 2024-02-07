@@ -13,7 +13,7 @@ h1, h2, h3 , h4, h5, h6 {
     position: fixed;
     width: 100%;
     /* background: url("/images/countriesworld.jpg"); */
-    background-color: rgb(255, 47, 47) !important;
+    background-color: rgba(47, 255, 109, 0.685) !important;
     background-size: cover;
     z-index: 10;
   }
@@ -23,7 +23,7 @@ h1, h2, h3 , h4, h5, h6 {
   }
   .navbar-brand img {
     padding-right: 0px;
-    width: 150px;
+    width: 100px;
   }
   .nav-item {
     margin: 0px 15px;
