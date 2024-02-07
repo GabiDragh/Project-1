@@ -1,3 +1,9 @@
+/* ----------------- Create a listener for the Clear button ----------------- */
+document.getElementById("clearSearchButton").addEventListener("click", resetApp);
+
+/* ----------------- Create a listener for the Search button ---------------- */
+document.getElementById("countrySearch").addEventListener("click", fetchCountryInfo);
+
 /* ------- Create buttons if countries already stored in local storage ------ */
 var countryArray = [];
 var countryArrayStored = localStorage.getItem("Countries");
@@ -36,54 +42,80 @@ function createCountryButton(country, updateLS) {
   }
 }
 
-
-
 /* ---- Function to clear local storage when the reset button is pressed ---- */
 function resetApp() {
+  console.log("Clear button pressed");
   localStorage.removeItem("Countries");
+  var targetSection = document.getElementById("history");
+  targetSection.innerHTML = "";
+  countryArray = [];
 }
 
-/* ------------------- Fetch country and news information ------------------- */
-$(document).ready(function () {
-  $("#searchCountry").on("click", function (e) {
-    e.preventDefault();
-    var countryName = $("#search-input").val();
+/* --------------------- Function to fetch country info --------------------- */
+function fetchCountryInfo(e) {
 
-    const apiUrl =
-      "https://restcountries.com/v3.1/name/" + countryName + "?fullText=true";
+  e.preventDefault();
+  var countryName = document.getElementById("search-input").value;
 
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(apiUrl);
-        console.log(data);
+  console.log(`Info: Am in function to fetch country info for ${countryName}`);
 
-        var capital = data[0].capital[0];
-        console.log("Capital:", capital);
-        var lat = data[0].latlng[0];
-        console.log("Lat:", lat);
-        var lon = data[0].latlng[1];
-        console.log("lon:", lon);
-        var sideOfRoad = data[0].car.side;
-        console.log("side of road", sideOfRoad);
-        var continent = data[0].continents[0];
-        console.log(continent);
-        var flagURL = data[0].flags.png;
-        console.log(flagURL);
-        var isIndependent = data[0].independent;
-        console.log(isIndependent);
-        var languages = data[0].languages;
-        console.log(languages);
-        var timezone = data[0].timezones[0];
-        console.log(timezone);
-        var officialName = data[0].name.official;
-        console.log(officialName);
-        var mapsLink = data[0].maps.googleMaps;
-        console.log(mapsLink);
-        var newsCountry = data[0].cca2;
-        console.log(newsCountry);
+  const apiUrl =
+    "https://restcountries.com/v3.1/name/" + countryName + "?fullText=true";
 
-        var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(apiUrl);
+      console.log(data);
+
+      var capital = data[0].capital[0];
+      console.log("Capital:", capital);
+      var lat = data[0].latlng[0];
+      console.log("Lat:", lat);
+      var lon = data[0].latlng[1];
+      console.log("lon:", lon);
+      var sideOfRoad = data[0].car.side;
+      console.log("side of road", sideOfRoad);
+      var continent = data[0].continents[0];
+      console.log(continent);
+      var flagURL = data[0].flags.png;
+      console.log(flagURL);
+      var flag_disp = document.getElementById("flag_disp");
+
+      flag_disp.src = flagURL;
+
+      var isIndependent = data[0].independent;
+      console.log(isIndependent);
+      var languages = data[0].languages;
+      console.log(languages);
+      var timezone = data[0].timezones[0];
+      console.log(timezone);
+      var officialName = data[0].name.official;
+      console.log(officialName);
+      var mapsLink = data[0].maps.googleMaps;
+      console.log(mapsLink);
+      var newsCountry = data[0].cca2;
+      console.log(newsCountry);
+
+      var APIkey = "3e63b2e1d60e44d09750ac4308a89e23";
+
+      var getNewsURL =
+        "https://newsapi.org/v2/top-headlines?country=" +
+        newsCountry +
+        "&apiKey=" +
+        APIkey;
+      var corsURL =
+        "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + getNewsURL;
+      console.log(getNewsURL);
+      console.log(corsURL);
+      fetch(corsURL)
+        .then(function (response) {
+          console.log(JSON.stringify(response.json));
+          return response.json();
+        })
+        .then(function (newsData) {
+          console.log(newsData);
+          var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
 
         var getNewsURL =
           "https://newsdata.io/api/1/news?apikey=" + APIkey + "&country=" + newsCountry;
@@ -99,10 +131,10 @@ $(document).ready(function () {
           })
           .then(function (newsData) {
             console.log(newsData);
-            createCountryButton(countryName, true);
+            if (!(countryArray.includes(countryName))) createCountryButton(countryName, true);
             // displayLocalNews(); 
             $(".card-title").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
-            $("card-text").empty();
+            $(".card-text").empty();
             var newsArray = newsData.results;
             console.log(newsArray);
 
@@ -114,10 +146,8 @@ $(document).ready(function () {
 
             var articleText = randomArticle.description;
             $(".card-text").append(articleText);
-          });
-      });
-  });
+        });
+    });
 });
 
-
-
+}
