@@ -77,32 +77,53 @@ function fetchCountryInfo(e) {
 
       var capital = data[0].capital[0];
       console.log("Capital:", capital);
+      $('#capital').html("Capital: " + capital);
+
       var lat = data[0].latlng[0];
       console.log("Lat:", lat);
+      $('#latitude').html("Latitude: " + lat);
+
       var lon = data[0].latlng[1];
       console.log("lon:", lon);
+      $('#longitude').html("Longitude: " + lon);
+
       var sideOfRoad = data[0].car.side;
       console.log("side of road", sideOfRoad);
+      $('#sideOfRoad').html("Capital: " + sideOfRoad);
+
       var continent = data[0].continents[0];
       console.log(continent);
+      $('#continent').html("Continent: " + continent);
+
       var flagURL = data[0].flags.png;
       console.log(flagURL);
-      var flag_disp = document.getElementById("flag_disp");
-
-      flag_disp.src = flagURL;
+      $("#flag_img").attr('src', flagURL);
 
       var isIndependent = data[0].independent;
       console.log(isIndependent);
+      $('#isIndependent').html("Independent country: " + isIndependent);
+
       var languages = data[0].languages;
       console.log(languages);
+      $('#languages').html(JSON.stringify(languages));
+      
+
       var timezone = data[0].timezones[0];
       console.log(timezone);
+      $('#timezone').html("Timezone: " + timezone);
+
       var officialName = data[0].name.official;
       console.log(officialName);
+      $('#officialName').html("Official Name: " + officialName);
+
       var mapsLink = data[0].maps.googleMaps;
       console.log(mapsLink);
+      $('#mapsLink a').attr('href', mapsLink);
+      $('#mapsLink a').html(mapsLink);
+
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
+      $('#newsCountry').html("Country Initial: " + newsCountry);
 
       var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
 
