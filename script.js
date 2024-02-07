@@ -128,7 +128,7 @@ function fetchCountryInfo(e) {
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
       $('#newsCountry').html("Country Initial: " + newsCountry);
-
+      //test
       $('.country_not_found').hide();
       $('.country_info').show();
 
