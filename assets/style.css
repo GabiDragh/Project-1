@@ -10,7 +10,6 @@ h1, h2, h3 , h4, h5, h6 {
   
   /* General */
   .customNav {
-   
     width: 100%;
     /* background: url("/images/countriesworld.jpg"); */
     background-color: rgba(47, 206, 255, 0.685) !important;
@@ -21,6 +20,11 @@ h1, h2, h3 , h4, h5, h6 {
     margin-left: auto;
     margin-right: 0 !important;
   }
+
+.navbar-brand {
+  font-weight: bold;
+}
+
   .navbar-brand img {
     padding-right: 0px;
     width: 100px;

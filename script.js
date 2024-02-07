@@ -1,3 +1,17 @@
+/* ----------------- Create a listener for the Clear button ----------------- */
+document
+  .getElementById("clearSearchButton")
+  .addEventListener("click", resetApp);
+
+/* ----------------- Create a listener for the Search button ---------------- */
+document
+  .getElementById("countrySearch")
+  .addEventListener("click", fetchCountryInfo);
+
+/* --------------- Event listener when Country button is pressed ------------ */
+var container = document.getElementById("history");
+container.addEventListener("click", handleCountryButtonClick);
+
 /* ------- Create buttons if countries already stored in local storage ------ */
 var countryArray = [];
 var countryArrayStored = localStorage.getItem("Countries");
@@ -25,7 +39,7 @@ function createCountryButton(country, updateLS) {
   button.textContent = country;
 
   // Step 4: Append the button to the HTML document
-  targetSection.appendChild(button);
+  targetSection.prepend(button);
 
   // Update array of countries and save to local storage
   if (updateLS) {
@@ -38,69 +52,150 @@ function createCountryButton(country, updateLS) {
 
 /* ---- Function to clear local storage when the reset button is pressed ---- */
 function resetApp() {
+  console.log("Clear button pressed");
   localStorage.removeItem("Countries");
+  var targetSection = document.getElementById("history");
+  targetSection.innerHTML = "";
+  countryArray = [];
 }
 
-/* ------------------- Fetch country and news information ------------------- */
-$(document).ready(function () {
-  $("button").on("click", function (e) {
-    e.preventDefault();
-    var countryName = $("#search-input").val();
+/* --------------------- Function to fetch country info --------------------- */
+function fetchCountryInfo(e) {
+  e.preventDefault();
+  var countryName = document.getElementById("search-input").value;
 
-    const apiUrl =
-      "https://restcountries.com/v3.1/name/" + countryName + "?fullText=true";
+  console.log(`Info: Am in function to fetch country info for ${countryName}`);
 
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(apiUrl);
-        console.log(data);
+  const apiUrl =
+    "https://restcountries.com/v3.1/name/" + countryName + "?fullText=true";
 
-        var capital = data[0].capital[0];
-        console.log("Capital:", capital);
-        var lat = data[0].latlng[0];
-        console.log("Lat:", lat);
-        var lon = data[0].latlng[1];
-        console.log("lon:", lon);
-        var sideOfRoad = data[0].car.side;
-        console.log("side of road", sideOfRoad);
-        var continent = data[0].continents[0];
-        console.log(continent);
-        var flagURL = data[0].flags.png;
-        console.log(flagURL);
-        var isIndependent = data[0].independent;
-        console.log(isIndependent);
-        var languages = data[0].languages;
-        console.log(languages);
-        var timezone = data[0].timezones[0];
-        console.log(timezone);
-        var officialName = data[0].name.official;
-        console.log(officialName);
-        var mapsLink = data[0].maps.googleMaps;
-        console.log(mapsLink);
-        var newsCountry = data[0].cca2;
-        console.log(newsCountry);
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(apiUrl);
+      console.log(data);
 
-        var APIkey = "3e63b2e1d60e44d09750ac4308a89e23";
+      var capital = data[0].capital[0];
+      console.log("Capital:", capital);
+      $('#capital').html("Capital: " + capital);
 
-        var getNewsURL =
-          "https://newsapi.org/v2/top-headlines?country=" +
-          newsCountry +
-          "&apiKey=" +
-          APIkey;
-        var corsURL =
-          "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + getNewsURL;
-        console.log(getNewsURL);
-        console.log(corsURL);
-        fetch(corsURL)
-          .then(function (response) {
-            console.log(JSON.stringify(response.json));
-            return response.json();
-          })
-          .then(function (newsData) {
-            console.log(newsData);
+      var lat = data[0].latlng[0];
+      console.log("Lat:", lat);
+      $('#latitude').html("Latitude: " + lat);
+
+      var lon = data[0].latlng[1];
+      console.log("lon:", lon);
+      $('#longitude').html("Longitude: " + lon);
+
+      var sideOfRoad = data[0].car.side;
+      console.log("side of road", sideOfRoad);
+      $('#sideOfRoad').html("Capital: " + sideOfRoad);
+
+      var continent = data[0].continents[0];
+      console.log(continent);
+      $('#continent').html("Continent: " + continent);
+
+      var flagURL = data[0].flags.png;
+      console.log(flagURL);
+      $("#flag_img").attr('src', flagURL);
+
+      var isIndependent = data[0].independent;
+      console.log(isIndependent);
+      $('#isIndependent').html("Independent country: " + isIndependent);
+
+      var languages = data[0].languages;
+      console.log(languages);
+      $('#languages').html(JSON.stringify(languages));
+      
+
+      var timezone = data[0].timezones[0];
+      console.log(timezone);
+      $('#timezone').html("Timezone: " + timezone);
+
+      var officialName = data[0].name.official;
+      console.log(officialName);
+      $('#officialName').html("Official Name: " + officialName);
+
+      var mapsLink = data[0].maps.googleMaps;
+      console.log(mapsLink);
+      $('#mapsLink a').attr('href', mapsLink);
+      $('#mapsLink a').html(mapsLink);
+
+      var newsCountry = data[0].cca2;
+      console.log(newsCountry);
+      $('#newsCountry').html("Country Initial: " + newsCountry);
+
+      var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
+
+      var getNewsURL =
+        "https://newsdata.io/api/1/news?apikey=" +
+        APIkey +
+        "&country=" +
+        newsCountry;
+
+      var corsURL =
+        "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" +
+        getNewsURL;
+      console.log(getNewsURL);
+      console.log(corsURL);
+      fetch(corsURL)
+        .then(function (response) {
+          console.log(JSON.stringify(response.json));
+          return response.json();
+        })
+        .then(function (newsData) {
+          console.log(newsData);
+          if (!countryArray.includes(countryName))
             createCountryButton(countryName, true);
-          });
-      });
+          // displayLocalNews();
+          $(".card-title").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+          $(".card-text").empty();
+          $(".card-title-two").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+          $(".card-text-two").empty();
+          $(".card-title-three").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+          $(".card-text-three").empty();
+          var newsArray = newsData.results;
+          console.log(newsArray);
+
+          var randomArticle = newsArray[0];
+          console.log(randomArticle);
+
+          var articleTitle = randomArticle.title;
+          $(".card-title").append(articleTitle);
+
+          var articleText = randomArticle.description;
+          $(".card-text").append(articleText);
+
+          var randomArticleTwo = newsArray[1];
+          console.log(randomArticle);
+
+          var articleTitleTwo = randomArticleTwo.title;
+          $(".card-title-two").append(articleTitleTwo);
+
+          var articleTextTwo = randomArticleTwo.description;
+          $(".card-text-two").append(articleTextTwo);
+
+          var randomArticleThree = newsArray[2];
+          console.log(randomArticleThree);
+
+          var articleTitleThree = randomArticleThree.title;
+          $(".card-title-three").append(articleTitleThree);
+
+          var articleTextThree = randomArticleThree.description;
+          $(".card-text-three").append(articleTextThree);
+        });
+    })
+    .catch(error => {
+      console.log(error);
+      $('#capital').html("Not found");
   });
-});
+};
+
+/* --------- Function to handle the button click for country button --------- */
+function handleCountryButtonClick(event) {
+  console.log("Am in the handleCountryButtonClick function");
+  if (event.target.tagName === "BUTTON" && event.target.dataset.country) {
+    document.getElementById("search-input").value = event.target.dataset.country;
+    fetchCountryInfo(event);
+  }
+}
