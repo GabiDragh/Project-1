@@ -116,6 +116,39 @@ function fetchCountryInfo(e) {
         .then(function (newsData) {
           console.log(newsData);
           if (!(countryArray.includes(countryName))) createCountryButton(countryName, true);
+          var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
+
+        var getNewsURL =
+          "https://newsdata.io/api/1/news?apikey=" + APIkey + "&country=" + newsCountry;
+
+        var corsURL =
+          "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + getNewsURL;
+        console.log(getNewsURL);
+        console.log(corsURL);
+        fetch(corsURL)
+          .then(function (response) {
+            console.log(JSON.stringify(response.json));
+            return response.json();
+          })
+          .then(function (newsData) {
+            console.log(newsData);
+            if (!(countryArray.includes(countryName))) createCountryButton(countryName, true);
+            // displayLocalNews(); 
+            $(".card-title").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+            $(".card-text").empty();
+            var newsArray = newsData.results;
+            console.log(newsArray);
+
+            var randomArticle = newsArray[Math.floor(Math.random()*newsArray.length)];
+            console.log(randomArticle);
+          
+            var articleTitle = randomArticle.title;
+            $(".card-title").append(articleTitle);
+
+            var articleText = randomArticle.description;
+            $(".card-text").append(articleText);
         });
     });
-};
+});
+
+}
