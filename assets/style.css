@@ -10,12 +10,12 @@ h1, h2, h3 , h4, h5, h6 {
   
   /* General */
   .customNav {
-    position: fixed;
+   
     width: 100%;
     /* background: url("/images/countriesworld.jpg"); */
     background-color: rgba(47, 255, 109, 0.685) !important;
     background-size: cover;
-    z-index: 10;
+ 
   }
   .navbar-nav {
     margin-left: auto;
