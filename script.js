@@ -8,6 +8,10 @@ document
   .getElementById("countrySearch")
   .addEventListener("click", fetchCountryInfo);
 
+/* --------------- Event listener when Country button is pressed ------------ */
+var container = document.getElementById("history");
+container.addEventListener("click", handleCountryButtonClick);
+
 /* ------- Create buttons if countries already stored in local storage ------ */
 var countryArray = [];
 var countryArrayStored = localStorage.getItem("Countries");
@@ -100,65 +104,73 @@ function fetchCountryInfo(e) {
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
 
-          var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
+      var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
 
-          var getNewsURL =
-            "https://newsdata.io/api/1/news?apikey=" +
-            APIkey +
-            "&country=" +
-            newsCountry;
+      var getNewsURL =
+        "https://newsdata.io/api/1/news?apikey=" +
+        APIkey +
+        "&country=" +
+        newsCountry;
 
-          var corsURL =
-            "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" +
-            getNewsURL;
-          console.log(getNewsURL);
-          console.log(corsURL);
-          fetch(corsURL)
-            .then(function (response) {
-              console.log(JSON.stringify(response.json));
-              return response.json();
-            })
-            .then(function (newsData) {
-              console.log(newsData);
-              if (!countryArray.includes(countryName))
-                createCountryButton(countryName, true);
-              // displayLocalNews();
-              $(".card-title").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
-              $(".card-text").empty();
-              $(".card-title-two").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
-              $(".card-text-two").empty();
-              $(".card-title-three").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
-              $(".card-text-three").empty();
-              var newsArray = newsData.results;
-              console.log(newsArray);
+      var corsURL =
+        "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" +
+        getNewsURL;
+      console.log(getNewsURL);
+      console.log(corsURL);
+      fetch(corsURL)
+        .then(function (response) {
+          console.log(JSON.stringify(response.json));
+          return response.json();
+        })
+        .then(function (newsData) {
+          console.log(newsData);
+          if (!countryArray.includes(countryName))
+            createCountryButton(countryName, true);
+          // displayLocalNews();
+          $(".card-title").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+          $(".card-text").empty();
+          $(".card-title-two").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+          $(".card-text-two").empty();
+          $(".card-title-three").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+          $(".card-text-three").empty();
+          var newsArray = newsData.results;
+          console.log(newsArray);
 
-              var randomArticle = newsArray[0];
-              console.log(randomArticle);
+          var randomArticle = newsArray[0];
+          console.log(randomArticle);
 
-              var articleTitle = randomArticle.title;
-              $(".card-title").append(articleTitle);
+          var articleTitle = randomArticle.title;
+          $(".card-title").append(articleTitle);
 
-              var articleText = randomArticle.description;
-              $(".card-text").append(articleText);
+          var articleText = randomArticle.description;
+          $(".card-text").append(articleText);
 
-              var randomArticleTwo = newsArray[1];
-              console.log(randomArticle);
+          var randomArticleTwo = newsArray[1];
+          console.log(randomArticle);
 
-              var articleTitleTwo = randomArticleTwo.title;
-              $(".card-title-two").append(articleTitleTwo);
+          var articleTitleTwo = randomArticleTwo.title;
+          $(".card-title-two").append(articleTitleTwo);
 
-              var articleTextTwo = randomArticleTwo.description;
-              $(".card-text-two").append(articleTextTwo);
+          var articleTextTwo = randomArticleTwo.description;
+          $(".card-text-two").append(articleTextTwo);
 
-              var randomArticleThree = newsArray[2];
-              console.log(randomArticleThree);
+          var randomArticleThree = newsArray[2];
+          console.log(randomArticleThree);
 
-              var articleTitleThree = randomArticleThree.title;
-              $(".card-title-three").append(articleTitleThree);
+          var articleTitleThree = randomArticleThree.title;
+          $(".card-title-three").append(articleTitleThree);
 
-              var articleTextThree = randomArticleThree.description;
-              $(".card-text-three").append(articleTextThree);
-            });
+          var articleTextThree = randomArticleThree.description;
+          $(".card-text-three").append(articleTextThree);
         });
-    };
+    });
+};
 
+/* --------- Function to handle the button click for country button --------- */
+function handleCountryButtonClick(event) {
+  console.log("Am in the handleCountryButtonClick function");
+  if (event.target.tagName === "BUTTON" && event.target.dataset.country) {
+    document.getElementById("search-input").value = event.target.dataset.country;
+    fetchCountryInfo(event);
+  }
+}
