@@ -25,7 +25,7 @@ function createCountryButton(country, updateLS) {
   button.textContent = country;
 
   // Step 4: Append the button to the HTML document
-  targetSection.appendChild(button);
+  targetSection.prepend(button);
 
   // Update array of countries and save to local storage
   if (updateLS) {
@@ -36,6 +36,8 @@ function createCountryButton(country, updateLS) {
   }
 }
 
+
+
 /* ---- Function to clear local storage when the reset button is pressed ---- */
 function resetApp() {
   localStorage.removeItem("Countries");
@@ -43,7 +45,7 @@ function resetApp() {
 
 /* ------------------- Fetch country and news information ------------------- */
 $(document).ready(function () {
-  $("button").on("click", function (e) {
+  $("#searchCountry").on("click", function (e) {
     e.preventDefault();
     var countryName = $("#search-input").val();
 
@@ -81,13 +83,11 @@ $(document).ready(function () {
         var newsCountry = data[0].cca2;
         console.log(newsCountry);
 
-        var APIkey = "3e63b2e1d60e44d09750ac4308a89e23";
+        var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
 
         var getNewsURL =
-          "https://newsapi.org/v2/top-headlines?country=" +
-          newsCountry +
-          "&apiKey=" +
-          APIkey;
+          "https://newsdata.io/api/1/news?apikey=" + APIkey + "&country=" + newsCountry;
+
         var corsURL =
           "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + getNewsURL;
         console.log(getNewsURL);
@@ -100,7 +100,24 @@ $(document).ready(function () {
           .then(function (newsData) {
             console.log(newsData);
             createCountryButton(countryName, true);
+            // displayLocalNews(); 
+            $(".card-title").empty(); //would have liked all of this in a function, but I couldn't make it work outside of here
+            $("card-text").empty();
+            var newsArray = newsData.results;
+            console.log(newsArray);
+
+            var randomArticle = newsArray[Math.floor(Math.random()*newsArray.length)];
+            console.log(randomArticle);
+          
+            var articleTitle = randomArticle.title;
+            $(".card-title").append(articleTitle);
+
+            var articleText = randomArticle.description;
+            $(".card-text").append(articleText);
           });
       });
   });
 });
+
+
+
