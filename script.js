@@ -100,7 +100,7 @@ function fetchCountryInfo(e) {
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
 
-          var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
+          var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
 
           var getNewsURL =
             "https://newsdata.io/api/1/news?apikey=" +
