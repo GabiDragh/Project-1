@@ -100,27 +100,7 @@ function fetchCountryInfo(e) {
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
 
-      var APIkey = "3e63b2e1d60e44d09750ac4308a89e23";
-
-      var getNewsURL =
-        "https://newsapi.org/v2/top-headlines?country=" +
-        newsCountry +
-        "&apiKey=" +
-        APIkey;
-      var corsURL =
-        "https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + getNewsURL;
-      console.log(getNewsURL);
-      console.log(corsURL);
-      fetch(corsURL)
-        .then(function (response) {
-          console.log(JSON.stringify(response.json));
-          return response.json();
-        })
-        .then(function (newsData) {
-          console.log(newsData);
-          if (!countryArray.includes(countryName))
-            createCountryButton(countryName, true);
-          var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
+          var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
 
           var getNewsURL =
             "https://newsdata.io/api/1/news?apikey=" +
@@ -164,21 +144,21 @@ function fetchCountryInfo(e) {
               var randomArticleTwo = newsArray[1];
               console.log(randomArticle);
 
-              var articleTitle = randomArticleTwo.title;
-              $(".card-title-two").append(articleTitle);
+              var articleTitleTwo = randomArticleTwo.title;
+              $(".card-title-two").append(articleTitleTwo);
 
-              var articleText = randomArticleTwo.description;
-              $(".card-text-two").append(articleText);
+              var articleTextTwo = randomArticleTwo.description;
+              $(".card-text-two").append(articleTextTwo);
 
               var randomArticleThree = newsArray[2];
               console.log(randomArticleThree);
 
-              var articleTitle = randomArticleThree.title;
-              $(".card-title-three").append(articleTitle);
+              var articleTitleThree = randomArticleThree.title;
+              $(".card-title-three").append(articleTitleThree);
 
-              var articleText = randomArticleThree.description;
-              $(".card-text-three").append(articleText);
+              var articleTextThree = randomArticleThree.description;
+              $(".card-text-three").append(articleTextThree);
             });
         });
-    });
-}
+    };
+
