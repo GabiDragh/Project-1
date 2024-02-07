@@ -75,6 +75,10 @@ $(document).ready(function () {
         console.log(continent);
         var flagURL = data[0].flags.png;
         console.log(flagURL);
+        var flag_disp = document.getElementById("flag_disp");
+        
+        flag_disp.src = flagURL;
+        
         var isIndependent = data[0].independent;
         console.log(isIndependent);
         var languages = data[0].languages;
