@@ -184,7 +184,11 @@ function fetchCountryInfo(e) {
           var articleTextThree = randomArticleThree.description;
           $(".card-text-three").append(articleTextThree);
         });
-    });
+    })
+    .catch(error => {
+      console.log(error);
+      $('#capital').html("Not found");
+  });
 };
 
 /* --------- Function to handle the button click for country button --------- */
