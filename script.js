@@ -115,6 +115,7 @@ function fetchCountryInfo(e) {
         })
         .then(function (newsData) {
           console.log(newsData);
+          if (!(countryArray.includes(countryName))) createCountryButton(countryName, true);
           var APIkey = "pub_3778891947fb4c6f4c1ed809b3c14953af85c";
 
         var getNewsURL =
