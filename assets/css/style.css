@@ -34,10 +34,10 @@ body
     font-weight: 700;
 }
 
-.navbar-nav .nav-link,
-.navbar-nav .nav-link.active
+.navbar-nav .nav-link
 {
     color: #fff;
+    cursor: pointer;
 }
 
 h6
