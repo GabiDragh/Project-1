@@ -43,29 +43,32 @@
   <div class="container-fluid"> <!--Search, Local News and Search history card container-->
     <div class="row column-gap-4 justify-content-center mt-5">
 
-      <aside class="card col-lg-4 mt-1 mb-2 pb-3">
+      <aside class="card col-lg-10 p-4">
         <div class="card-body">
-
-          <h2 id="countriesFormHeader">Search for a country</h2>
-          <br></br> 
           <form>
-            <div class="form-group row mt-1">
-              <label for="search-input" class="col-sm-3 col-form-label">Country</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="search-input" placeholder="Enter country"/>
+            <h6 class="text-white">Explore the latest information and news updates about a specific country.</h6>
+            <div class="d-flex">
+              <div class="form-group w-100 row mt-1">
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" id="search-input" placeholder="Search for a country"/>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row mt-1" id="countrySearch">
-              <div class="col-sm-3">
-                <button type="submit" class="btn btn-primary mt-2">Search</button>
+              <div class="form-group row mt-1" id="countrySearch">
+                <div class="col-sm-3">
+                  <button type="submit" class="btn btn-primary ms-2 search">Search</button>
+                </div>
               </div>
             </div>
 
           </form>
-          <br></br>
-          
-          <div class="country_info">
+        </div>
+      </aside>
+
+
+      <div class="d-flex col-lg-10">
+        <section id="countryData">
+          <div class="country_info text-center text-white p-4">
             <img id="flag_img" src="" alt="" width="300" height="200">
             <div id="capital"></div>
             <div id="latitude"></div>
@@ -80,15 +83,14 @@
             <div id="newsCountry"></div>
           </div>
           <div class="country_not_found">Country not found!</div>
-        </div>
-      </aside>
+        </section>
 
      <!--Local news section card-->
 
-        <div class="card col-lg-5 mt-1 mb-2 g-2 pb-3 news_section">
+        <div class="card ms-3 g-2 pb-3 news_section">
             <div class="card-body">
                 <section id="localNews">
-                   <h2 id="newsHeader">Local news</h2>
+                   <h2 id="newsHeader" class="text-white">Local news</h2>
                    <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                       <h2 class="accordion-header">
@@ -120,9 +122,11 @@
                   </div>
                 </section>
            </div>
-
         </div>
-              <!--Search history section card-->
+      </div>
+      
+      
+      <!--Search history section card-->
 
       <div class="card col-lg-2 mt-1 mb-2 g-1 pb-3"> 
         <div class="card-body">
@@ -138,14 +142,14 @@
       </div> 
     </div>
   </div>
-      </div>
+</div>
 
 
 
  <!--Footer Bootstrap card-->
 
  <div class="footer card text-center mt-5">
-   <div class="card-footer">
+  <div class="card-footer">
      Created with ❤️ by 
      <!-- Github Icon-->
      <a
