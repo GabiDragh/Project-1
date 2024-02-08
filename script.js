@@ -89,7 +89,7 @@ function fetchCountryInfo(e) {
 
       var sideOfRoad = data[0].car.side;
       console.log("side of road", sideOfRoad);
-      $('#sideOfRoad').html("Capital: " + sideOfRoad);
+      $('#sideOfRoad').html("Side of road: " + sideOfRoad);
 
       var continent = data[0].continents[0];
       console.log(continent);
@@ -105,9 +105,13 @@ function fetchCountryInfo(e) {
 
       var languages = data[0].languages;
       console.log(languages);
-      $('#languages').html(JSON.stringify(languages));
-      
+      var languages_array = [];
 
+      for(var i in languages)
+        languages_array.push(languages[i]);
+          
+      $('#languages').html(languages_array.toString());
+      
       var timezone = data[0].timezones[0];
       console.log(timezone);
       $('#timezone').html("Timezone: " + timezone);
@@ -124,6 +128,9 @@ function fetchCountryInfo(e) {
       var newsCountry = data[0].cca2;
       console.log(newsCountry);
       $('#newsCountry').html("Country Initial: " + newsCountry);
+      
+      $('.country_not_found').hide();
+      $('.country_info').show();
 
       var APIkey = "pub_378280dff9b7b7117e605422bac64f7b9a752";
 
@@ -183,8 +190,14 @@ function fetchCountryInfo(e) {
 
           var articleTextThree = randomArticleThree.description;
           $(".card-text-three").append(articleTextThree);
+          $('.news_section').show();
         });
-    });
+    })
+    .catch(error => {
+      console.log(error);
+      $('.country_info').hide();
+      $('.country_not_found').show();
+  });
 };
 
 /* --------- Function to handle the button click for country button --------- */
