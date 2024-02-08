@@ -75,6 +75,7 @@ h6
 section#countryData
 {
     z-index: 1;
+    position: relative;
 }
 
 .country_info,
