@@ -1,6 +1,124 @@
+
+body
+{
+    background-image: url('../images/bg2.jpg');
+    background-size: cover;
+    color: #fff;
+}
+
+.bg-opacity
+{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.navbar-toggler:focus
+{
+    box-shadow: none;
+}
+
+.navbar-toggler-icon
+{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-brand,
+.navbar-brand:hover
+{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.navbar-nav .nav-link
+{
+    color: #fff;
+    cursor: pointer;
+}
+
+h6
+{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.card
+{
+    background-color: transparent;
+    border-color: transparent;
+}
+
 .country_info,
 .country_not_found,
 .news_section
 {
     display: none;
+}
+
+.search,
+.search:hover,
+.search.btn:first-child:active
+{
+    background-color: rgb(74 79 85);
+    border-color: rgb(74 79 85);
+}
+
+.form-control:focus
+{
+    border-color: rgb(74 79 85);
+}
+
+section#countryData
+{
+    z-index: 1;
+    position: relative;
+}
+
+.country_info,
+.news_section
+{
+    border-color: rgb(33,37,41);
+    background: rgb(33,37,41);
+    border-radius: 0.375rem;
+    height: 350px;
+    overflow: scroll;
+}
+
+.country_not_found
+{
+    border-color: rgb(33,37,41);
+    background: rgb(33,37,41);
+    border-radius: 0.375rem;
+    padding: 30px;
+}
+
+/* .accordion-button
+{
+    border-color: rgb(33,37,41);
+    background: rgb(33,37,41);
+    color: #fff;
+} */
+
+.footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-color: rgb(33,37,41);
+    background: rgb(33,37,41);
+    color: #fff;
+}
+
+
+@media (min-width: 992px)
+{
+
+    .navbar-expand-lg .navbar-nav .nav-link
+    {
+        padding-left: 30px;
+    }
 }
