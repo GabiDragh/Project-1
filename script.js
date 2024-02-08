@@ -195,7 +195,7 @@ function fetchCountryInfo(e) {
     })
     .catch(error => {
       console.log(error);
-      $('.country_info, .news_section').hide();
+      $('.country_info').hide();
       $('.country_not_found').show();
   });
 };
