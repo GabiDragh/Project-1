@@ -15,6 +15,9 @@ A website that allows users to search for countries and view detailed informatio
 
 This is a simple web application built to provide users with information about countries worldwide. Users can search for a specific country and get details such as its capital, population, region, and currency. Additionally, the website displays the latest news headlines related to the searched country.
 
+# Demo
+ ![Demo](./CountrytoNews.gif)
+
 ## Features
 
 - Search for countries by name
